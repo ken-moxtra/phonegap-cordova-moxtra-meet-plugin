@@ -1,0 +1,70 @@
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+           id="com.phonegap.moxtra.meetIntegration"
+      version="0.1.0">
+    <name>MoxtraMeetIntegration</name>
+    <description>Moxtra Meet Functionality Integrated</description>
+    <license>MIT</license>
+    <keywords>phonegap,moxtra,meetIntegration</keywords>
+    <author>Ken Yu</author>
+    <repo>https://github.com/ken-yu-mxt/phonegap-cordova-moxtra-meet-plugin</repo>
+    
+    <engines>
+        <engine name="cordova" version=">=3.0.0" />
+    </engines>
+
+
+ 
+    <js-module src="www/moxtra-meet.js" name="MoxtraMeet">
+            <clobbers target="window.moxtra" />
+    </js-module>
+    
+    <!-- ios -->
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="MoxtraMeet">
+                <param name="ios-package" value="MoxtraMeetIntegration"/>
+            </feature>
+        </config-file>
+
+        <header-file src="src/ios/MoxtraMeetIntegration.h" />
+        <source-file src="src/ios/MoxtraMeetIntegration.m" />
+        <source-file src="src/ios/MoxtraSDK.sdk/MoxtraSDK" framework="true"  />
+        <header-file src="src/ios/MoxtraSDK.sdk/Moxtra.h"  />
+        <header-file src="src/ios/MoxtraSDK.sdk/MXClient.h"  />
+        <resource-file src="src/ios/MoxtraSDK.sdk/MoxtraSDKResources.bundle" />
+
+       <framework src="libc++.dylib" />
+       <framework src="libstdc++.6.dylib" />
+       <framework src="libxml2.2.dylib" />
+       <framework src="libz.dylib" />
+       <framework src="Accelerate.framework" />
+       <framework src="AddressBook.framework" />
+       <framework src="AddressBookUI.framework" />
+       <framework src="AssetsLibrary.framework" />
+       <framework src="AudioToolbox.framework" />
+       <framework src="AVFoundation.framework" />
+       <framework src="CFNetwork.framework" />
+       <framework src="CoreBluetooth.framework" />
+       <framework src="CoreFoundation.framework" />
+       <framework src="CoreGraphics.framework" />
+       <framework src="CoreImage.framework" />
+       <framework src="CoreLocation.framework" />
+       <framework src="CoreMedia.framework" />
+       <framework src="CoreTelephony.framework" />
+       <framework src="CoreText.framework" />
+       <framework src="CoreVideo.framework" />
+       <framework src="EventKit.framework" />
+       <framework src="Foundation.framework" />
+       <framework src="ImageIO.framework" />
+       <framework src="MapKit.framework" />
+       <framework src="MediaPlayer.framework" />
+       <framework src="MessageUI.framework" />
+       <framework src="MobileCoreServices.framework" />
+       <framework src="OpenGLES.framework" />
+       <framework src="QuartzCore.framework" />
+       <framework src="Security.framework" />
+       <framework src="StoreKit.framework" />
+       <framework src="SystemConfiguration.framework" />
+       <framework src="UIKit.framework" />
+    </platform>  
+</plugin>
