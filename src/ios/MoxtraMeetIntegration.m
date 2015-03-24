@@ -28,7 +28,7 @@ typedef void(^MXBLOCK_INV)();
     if( !self.registedFlag )
     {
         self.registedFlag = YES;
-        [Moxtra clientWithApplicationClientID:"APP_ID" applicationClientSecret:"CLIENT_SECRET"];
+        [Moxtra clientWithApplicationClientID:@"APP_ID" applicationClientSecret:@"CLIENT_SECRET"];
     }
 }
 
