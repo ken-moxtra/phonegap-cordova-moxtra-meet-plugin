@@ -85,6 +85,21 @@ typedef NS_ENUM(NSInteger, MXClientErrorCode) {
  */
 - (NSString *)customizedInviteMessage:(NSString *)meetLink withBeJoinedAudio:(BOOL)beJoinedAudio withBeStartedSharing:(BOOL)beStartedSharing;
 
+/**
+ * Return YES if the 3rd party need hide bottom control bar automatically when start or join meet. The default value is NO;
+ */
+- (BOOL)autoHideControlBar;
+
+/**
+ * Return NO if the 3rd party need disable VoIP and hide the VoIP button.
+ */
+- (BOOL)supportVoIP;
+
+/**
+ * Return NO if the 3rd party need disable chat and hide the chat button.
+ */
+- (BOOL)supportChat;
+
 @end
 
 
@@ -133,6 +148,8 @@ typedef enum enumUserIdentityType {
  *            User's avatar image. If need we will resize it according to the image size.
  * @param devicePushNotificationToken
  *            The device push notification token if the 3rd paryt need support notification for Moxtra client.
+ * @param withTimeout
+ *            The timeout when initialize user account, the default timeout will be set if the value is 0.0.
  * @param success
  *            Callback interface for notifying the calling application when
  *            setup user successed.
@@ -146,6 +163,7 @@ typedef enum enumUserIdentityType {
                          lastName:(NSString*)lastName
                            avatar:(UIImage*)avatar
       devicePushNotificationToken:(NSData*)deviceToken
+                      withTimeout:(NSTimeInterval)timeout
                           success:(void(^)())success
                           failure:(void(^)(NSError *error))failure;
 

@@ -124,6 +124,11 @@ var app = {
             //customize invite message in chat panel.
             meet.setCustomizedInviteMessage(app.getCustomizedInviteMessageMethod);
 
+            //cutomize features
+            meet.setAutoHideControlBar(false);//default is false.
+            meet.setSupportVoIP(true);//default is true.
+            meet.setSupportChat(true);//default is true.
+
             //login with unique id.
             meet.initUser(app.initUserSuccessCallback, app.initUserFailedCallback, 'firstname', 'lastName', 'user unique id', '');
 

@@ -11,6 +11,13 @@
 #import "MXClient.h"
 
 
+//During development, you will point your app at Moxtra's "sandbox" development environment. When you are ready to test on production, we will upgrade your key. (You can create test accounts on sandbox by just going to sandbox.moxtra.com).
+typedef enum enumServerType {
+    sandboxServer = 0,
+    productionServer
+}MXServerType;
+
+
 //Moxtra API
 @interface Moxtra : NSObject
 
@@ -24,8 +31,10 @@
  *            The MoxtraClient app client id.
  * @param clientSecret
  *            The MoxtraClient app client secret.
+ * @param serverType
+ *            The connecting server type.
  */
-+ (id<MXClient>)clientWithApplicationClientID:(NSString*)clientID applicationClientSecret:(NSString*)clientSecret;
++ (id<MXClient>)clientWithApplicationClientID:(NSString*)clientID applicationClientSecret:(NSString*)clientSecret serverType:(MXServerType)serverType;
 
 
 /**

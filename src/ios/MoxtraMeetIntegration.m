@@ -28,7 +28,7 @@ typedef void(^MXBLOCK_INV)();
     if( !self.registedFlag )
     {
         self.registedFlag = YES;
-        [Moxtra clientWithApplicationClientID:@"APP_ID" applicationClientSecret:@"CLIENT_SECRET"];
+        [Moxtra clientWithApplicationClientID:@"APP_ID" applicationClientSecret:@"CLIENT_SECRET" serverType:productionServer];
     }
 }
 
@@ -50,7 +50,7 @@ typedef void(^MXBLOCK_INV)();
     MXUserIdentity *userIdentity = [[MXUserIdentity alloc] init];
     userIdentity.userIdentityType = kUserIdentityTypeIdentityUniqueID;
     userIdentity.userIdentity = [command.arguments objectAtIndex:2];
-    [[Moxtra sharedClient] initializeUserAccount:userIdentity orgID:[command.arguments objectAtIndex:3] firstName:[command.arguments objectAtIndex:0] lastName:[command.arguments objectAtIndex:1] avatar:nil devicePushNotificationToken:nil success:^{
+    [[Moxtra sharedClient] initializeUserAccount:userIdentity orgID:[command.arguments objectAtIndex:3] firstName:[command.arguments objectAtIndex:0] lastName:[command.arguments objectAtIndex:1] avatar:nil devicePushNotificationToken:nil withTimeout:0.0 success:^{
         self.waitingForUserSetupCallbackFlag = NO;
         [self.commandDelegate evalJs:@"window.cordova.require('cordova/plugin/MoxtraMeetIntegration').setupUserSuccessCallback();"];
         
@@ -253,6 +253,36 @@ typedef void(^MXBLOCK_INV)();
     if( returnFlag.length == 0 || [returnFlag isEqualToString:@"null"])
         return nil;
     return returnFlag;
+}
+
+- (BOOL)autoHideControlBar
+{
+    NSString* javascript = [NSString stringWithFormat:@"window.cordova.require('cordova/plugin/MoxtraMeetIntegration').autoHideControlBar();"];
+    NSString* returnFlag = [self.webView stringByEvaluatingJavaScriptFromString:javascript];
+    if( [returnFlag isEqualToString:@"false"] )
+        return NO;
+    else
+        return YES;
+}
+
+- (BOOL)supportVoIP
+{
+    NSString* javascript = [NSString stringWithFormat:@"window.cordova.require('cordova/plugin/MoxtraMeetIntegration').supportVoIP();"];
+    NSString* returnFlag = [self.webView stringByEvaluatingJavaScriptFromString:javascript];
+    if( [returnFlag isEqualToString:@"false"] )
+        return NO;
+    else
+        return YES;
+}
+
+- (BOOL)supportChat
+{
+    NSString* javascript = [NSString stringWithFormat:@"window.cordova.require('cordova/plugin/MoxtraMeetIntegration').supportChat();"];
+    NSString* returnFlag = [self.webView stringByEvaluatingJavaScriptFromString:javascript];
+    if( [returnFlag isEqualToString:@"false"] )
+        return NO;
+    else
+        return YES;
 }
 
 @end

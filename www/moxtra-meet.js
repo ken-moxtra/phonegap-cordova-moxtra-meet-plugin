@@ -113,7 +113,7 @@ cordova.define("cordova/plugin/MoxtraMeetIntegration",
                     supportAutoStartScreenShareFlag = supportAutoStartScreenShare;
                };
                
-               //customize 4. suport invite contact by sms support flag.
+               //customize 4. support invite contact by sms support flag.
                //-------------------------------------------------------------------
                var supportInviteContactsBySMSFlag = true;
                MoxtraMeetIntegration.prototype.supportInviteContactsBySMS = function() {
@@ -180,6 +180,36 @@ cordova.define("cordova/plugin/MoxtraMeetIntegration",
                };
                MoxtraMeetIntegration.prototype.setCustomizedInviteMessage = function(generateInviteMessageMethod){
                     customizedInviteMessageMethod = generateInviteMessageMethod;
+               };
+               
+               //customize 9. auto hide bottom control bar flag.
+               //-------------------------------------------------------------------
+               var autoHideControlBarFlag = false;
+               MoxtraMeetIntegration.prototype.autoHideControlBar = function() {
+                    return autoHideControlBarFlag;
+               };
+               MoxtraMeetIntegration.prototype.setAutoHideControlBar = function(autoHideControlBar ){
+                    autoHideControlBarFlag = autoHideControlBar;
+               };
+               
+               //customize 10. support VoIP flag.
+               //-------------------------------------------------------------------
+               var supportVoIPFlag = true;
+               MoxtraMeetIntegration.prototype.supportVoIP = function() {
+                    return supportVoIPFlag;
+               };
+               MoxtraMeetIntegration.prototype.setSupportVoIP = function(supportVoIP ){
+                    supportVoIPFlag = supportVoIP;
+               };
+               
+               //customize 11. support chat flag.
+               //-------------------------------------------------------------------
+               var supportChatFlag = true;
+               MoxtraMeetIntegration.prototype.supportChat = function() {
+                    return supportChatFlag;
+               };
+               MoxtraMeetIntegration.prototype.setSupportChat = function(supportChat ){
+                    supportChatFlag = supportChat;
                };
                
                //setup user.
